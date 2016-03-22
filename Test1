@@ -1,0 +1,39 @@
+/*All LEDs should lit up*/
+//FOR ANODE
+int clock_1 = 1; //IC Pin 11
+int latch_1 = 2; //IC Pin 14
+int data_1 = 3; //IC Pin 12
+//FOR CATHODE
+int clock_2 = 8; //IC Pin 11
+int latch_2 = 9; //IC Pin 14
+int data_2 = 10; //IC Pin 12
+
+byte shift_4=B10000000;
+byte shift_3=B11111111;
+byte shift_2=B11111111;
+byte shift_1=B11111111;
+byte gnd=B00000000;
+
+void setup() {
+  // put your setup code here, to run once:
+pinMode(latch_1, OUTPUT);
+pinMode(clock_1, OUTPUT);
+pinMode(data_1, OUTPUT);
+pinMode(latch_2, OUTPUT);
+pinMode(clock_2, OUTPUT);
+pinMode(data_2, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+digitalWrite(latch_1, LOW);
+digitalWrite(latch_2, LOW);
+shiftOut(data_1, clock_1, MSBFIRST, shift_4);
+shiftOut(data_1, clock_1, MSBFIRST, shift_3);
+shiftOut(data_1, clock_1, MSBFIRST, shift_2);
+shiftOut(data_1, clock_1, MSBFIRST, shift_1);
+shiftOut(data_2, clock_2, MSBFIRST, gnd);
+digitalWrite(latch_1, HIGH);
+digitalWrite(latch_2, HIGH);
+delay(500);
+}
