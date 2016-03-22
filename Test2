@@ -1,0 +1,50 @@
+/*Each layer should light up one at a time*/
+//FOR ANODE
+int clock_1 = 1; //IC Pin 11
+int latch_1 = 2; //IC Pin 12
+int data_1 = 3; //IC Pin 14
+//FOR CATHODE
+int clock_2 = 8; //IC Pin 11
+int latch_2 = 9; //IC Pin 12
+int data_2 = 10; //IC Pin 14
+
+byte shift_4=B10000000;
+byte shift_3=B11111111;
+byte shift_2=B11111111;
+byte shift_1=B11111111;
+
+byte gnd[]={
+B01111000,
+B10111000,
+B11011000,
+B11101000,
+B11110000,
+B11111000
+}
+
+void setup() {
+pinMode(latch_1, OUTPUT);
+pinMode(clock_1, OUTPUT);
+pinMode(data_1, OUTPUT);
+pinMode(latch_2, OUTPUT);
+pinMode(clock_2, OUTPUT);
+pinMode(data_2, OUTPUT);
+}
+
+int i=0;
+
+void loop() {
+digitalWrite(latch_1, LOW);
+digitalWrite(latch_2, LOW);
+shiftOut(data_1, clock_1, MSBFIRST, shift_4);
+shiftOut(data_1, clock_1, MSBFIRST, shift_3);
+shiftOut(data_1, clock_1, MSBFIRST, shift_2);
+shiftOut(data_1, clock_1, MSBFIRST, shift_1);
+shiftOut(data_2, clock_2, MSBFIRST, gnd[i]);
+digitalWrite(latch_1, HIGH);
+digitalWrite(latch_2, HIGH);
+delay(500);
+i++;
+if (i>=6)
+i=0;
+}
