@@ -8,19 +8,18 @@ int clock_2 = 8; //IC Pin 11
 int latch_2 = 9; //IC Pin 12
 int data_2 = 10; //IC Pin 14
 
-byte shift_4=B10000000;
+byte shift_4=B1;
 byte shift_3=B11111111;
 byte shift_2=B11111111;
 byte shift_1=B11111111;
 
 byte gnd[]={
-B01111000,
-B10111000,
-B11011000,
-B11101000,
-B11110000,
-B11111000
-}
+B00001,
+B00010,
+B00100,
+B01000,
+B10000
+};
 
 void setup() {
 pinMode(latch_1, OUTPUT);
@@ -43,8 +42,8 @@ shiftOut(data_1, clock_1, MSBFIRST, shift_1);
 shiftOut(data_2, clock_2, MSBFIRST, gnd[i]);
 digitalWrite(latch_1, HIGH);
 digitalWrite(latch_2, HIGH);
-delay(500);
+delay(250);
 i++;
-if (i>=6)
+if (i>=5)
 i=0;
 }
