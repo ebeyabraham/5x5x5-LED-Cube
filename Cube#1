@@ -43,10 +43,10 @@ int i=0;
 void loop() {
 digitalWrite(latch_1, LOW);
 digitalWrite(latch_2, LOW);
-shiftOut(data_1, clock_1, MSBFIRST, shift_4);
-shiftOut(data_1, clock_1, MSBFIRST, shift_3);
-shiftOut(data_1, clock_1, MSBFIRST, shift_2);
-shiftOut(data_1, clock_1, MSBFIRST, shift_1);
+shiftOut(data_1, clock_1, MSBFIRST, shift_4[i]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_3[i]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_2[i]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_1[i]);
 shiftOut(data_2, clock_2, MSBFIRST, gnd[i]);
 digitalWrite(latch_1, HIGH);
 digitalWrite(latch_2, HIGH);
