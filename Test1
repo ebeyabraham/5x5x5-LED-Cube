@@ -8,11 +8,11 @@ int clock_2 = 8; //IC Pin 11
 int latch_2 = 9; //IC Pin 14
 int data_2 = 10; //IC Pin 12
 
-byte shift_4=B10000000;
+byte shift_4=B1;
 byte shift_3=B11111111;
 byte shift_2=B11111111;
 byte shift_1=B11111111;
-byte gnd=B00000000;
+byte gnd=B11111;
 
 void setup() {
   // put your setup code here, to run once:
