@@ -1,3 +1,4 @@
+/* Rotating Planes*/
 //FOR ANODE
 int clock_1 = 1; //IC Pin 11
 int latch_1 = 2; //IC Pin 12
