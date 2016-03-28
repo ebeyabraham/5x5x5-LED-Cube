@@ -9,26 +9,26 @@ int data_2 = 10; //IC Pin 14
 
 byte shift_1[]={
 B11111111,B00000001,B11111110,B00000001,B11111110,B00000001,B11111110
-}
+};
 
 byte shift_2[]={
 B11111111,B00000000,B11111111,B00000000,B11111111,B00000000,B11111111
-}
+};
 
 byte shift_3[]={
 B11111111,B00000000,B11111111,B00000000,B11111111,B00000000,B11111111
-}
+};
 
 byte shift_4[]={
 B1,       B0,       B1,        B0,       B1,      B0,       B1
-}
+};
 
 byte gnd[]={
 B00001,   B00010,   B00001,    B00100,   B00001,  B01000,   B00001
-}
+};
 
 int count = sizeof(gnd) / 2;
-
+/*Shooting Stars*/
 void setup() {
 pinMode(latch_1, OUTPUT);
 pinMode(clock_1, OUTPUT);
