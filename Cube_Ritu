@@ -24,8 +24,8 @@ B10010000, B00101001, B00010000, B00111001
 
 byte shift_3[]=
 {
-B11101001, B11100110, B11110010, B00011000,
-B11100000, B11100101, B01000111, B11100001
+B11101001, B11100010, B11110010, B00011000,
+B11100000, B11100101, B01000011, B11100001
 };
 
 byte shift_4[]=
@@ -63,15 +63,15 @@ void loop()
 {
 digitalWrite(latch_1, LOW);
 digitalWrite(latch_2, LOW);
-shiftOut(data_1, clock_1, MSBFIRST, shift_4[i%4]);
-shiftOut(data_1, clock_1, MSBFIRST, shift_3[i%4]);
-shiftOut(data_1, clock_1, MSBFIRST, shift_2[i%4]);
-shiftOut(data_1, clock_1, MSBFIRST, shift_1[i%4]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_4[i/5]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_3[i/5]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_2[i/5]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_1[i/5]);
 shiftOut(data_2, clock_2, MSBFIRST, gnd[i]);
 digitalWrite(latch_1, HIGH);
 digitalWrite(latch_2, HIGH);
 delay(500);
 i++
-if (i>=4)
+if (i>=40)
 i=0;
 }
