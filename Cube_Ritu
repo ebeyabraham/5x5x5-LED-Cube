@@ -71,7 +71,7 @@ shiftOut(data_2, clock_2, MSBFIRST, gnd[i]);
 digitalWrite(latch_1, HIGH);
 digitalWrite(latch_2, HIGH);
 delay(500);
-i++
+i++;
 if (i>=40)
 i=0;
 }
