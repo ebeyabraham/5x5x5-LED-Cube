@@ -1,0 +1,55 @@
+//"R" shape
+
+//FOR ANODE
+int clock_1 = 1; //IC Pin 11
+int latch_1 = 2; //IC Pin 12
+int data_1 = 3; //IC Pin 14
+//FOR CATHODE
+int clock_2 = 8; //IC Pin 11
+int latch_2 = 9; //IC Pin 12
+int data_2 = 10; //IC Pin 14
+
+
+
+byte shift_1=B01010010;
+
+byte shift_2=B00111001;
+
+byte shift_3=B11101001;
+
+byte shift_4=B00000000;
+
+byte gnd[]=
+{
+B00000001, B00000010, B00000100, B00001000, B00010000
+};
+
+
+void setup() 
+{
+pinMode(latch_1, OUTPUT);
+pinMode(clock_1, OUTPUT);
+pinMode(data_1, OUTPUT);
+pinMode(latch_2, OUTPUT);
+pinMode(clock_2, OUTPUT);
+pinMode(data_2, OUTPUT);
+}
+
+int i=0;
+
+void loop() 
+{
+digitalWrite(latch_1, LOW);
+digitalWrite(latch_2, LOW);
+shiftOut(data_1, clock_1, MSBFIRST, shift_4);
+shiftOut(data_1, clock_1, MSBFIRST, shift_3);
+shiftOut(data_1, clock_1, MSBFIRST, shift_2);
+shiftOut(data_1, clock_1, MSBFIRST, shift_1);
+shiftOut(data_2, clock_2, MSBFIRST, gnd[i]);
+digitalWrite(latch_1, HIGH);
+digitalWrite(latch_2, HIGH);
+delay(500);
+i++;
+if (i>=5)
+i=0;
+}
