@@ -1,0 +1,66 @@
+//Diagonal Pattern
+
+//FOR ANODE
+int clock_1 = 1; //IC Pin 11
+int latch_1 = 2; //IC Pin 12
+int data_1 = 3; //IC Pin 14
+//FOR CATHODE
+int clock_2 = 8; //IC Pin 11
+int latch_2 = 9; //IC Pin 12
+int data_2 = 10; //IC Pin 14
+
+byte shift_1[]=
+{
+B00000001, B00100010, B01000100, B10001000, B00010000,
+B00000000, B00000000, B00000000, B00000000
+};
+
+byte shift_2[]=
+{
+B00000000, B00000000, B00000100, B10001000, B00010001,
+B00100010, B01000000, B00000000, B00000000
+};
+
+byte shift_3[]=
+{
+B00000000, B00000000, B00000000, B00000000, B00010001,
+B00100010, B01000100, B10001000, B00000000
+};
+
+byte shift_4[]=
+{
+B0, B0, B0, B0, B0,
+B0, B0, B0, B1
+};
+
+byte gnd= B00011111;
+
+
+void setup() 
+{
+pinMode(latch_1, OUTPUT);
+pinMode(clock_1, OUTPUT);
+pinMode(data_1, OUTPUT);
+pinMode(latch_2, OUTPUT);
+pinMode(clock_2, OUTPUT);
+pinMode(data_2, OUTPUT);
+}
+
+int i=0;
+
+void loop() 
+{
+digitalWrite(latch_1, LOW);
+digitalWrite(latch_2, LOW);
+shiftOut(data_1, clock_1, MSBFIRST, shift_4[i]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_3[i]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_2[i]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_1[i]);
+shiftOut(data_2, clock_2, MSBFIRST, gnd);
+digitalWrite(latch_1, HIGH);
+digitalWrite(latch_2, HIGH);
+delay(100);
+i++;
+if (i>=9)
+i=0;
+}
