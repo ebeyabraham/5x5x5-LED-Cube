@@ -29,9 +29,9 @@ B11111,   B00001,   B00010,   B00100,    B01000,  B10000,   B00001,   B00010,   
 };
 
 int del[]={
-100,      0,        0,        0,         0,       0,        0,        0,        0,         0,       0,        0,        0,        0,         0,       0,        100
+1000000,      1,       1,        1,         1,      1,        1,        1,        1,         1,       1,        1,        1,        1,         1,       1,      1000000     
 };
-int count = sizeof(gnd) / 2;
+int count = sizeof(gnd) ;
 
 void setup() {
 pinMode(latch_1, OUTPUT);
@@ -54,7 +54,7 @@ shiftOut(data_1, clock_1, MSBFIRST, shift_1[i]);
 shiftOut(data_2, clock_2, MSBFIRST, gnd[i]);
 digitalWrite(latch_1, HIGH);
 digitalWrite(latch_2, HIGH);
-delay(del[i]);
+delayMicroseconds(del[i]);
 i++;
 if (i>=count)
 i=0;
