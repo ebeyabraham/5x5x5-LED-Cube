@@ -572,6 +572,7 @@ s_cube();
 rotatingPlane();
 stack();
 lblDiagonally();
+hollowCube();
 spiral();
 rotatingSidePlane();
 diagonalLitUp();
