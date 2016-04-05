@@ -17,23 +17,23 @@ pinMode(clock_2, OUTPUT);
 pinMode(data_2, OUTPUT);
 }
 
-void RITU()                                                                //RITU 2016
+void RITU()                                                                        //RITU 2016
 {
 byte shift_1[]=
 {
-B01010010, B10001110, B10000100, B01000100,
+B01010010, B10001110, B10000100, B01001100,
 B01011111, B01001110, B10001110, B01001110
 };
 
 byte shift_2[]=
 {
-B00111001, B00010000, B00010000, B11000101,
+B00111001, B00010000, B00010000, B01001010,
 B10010000, B00101001, B00010000, B00111001
 };
 
 byte shift_3[]=
 {
-B11101001, B11100010, B11110010, B00011000,
+B11101001, B11100010, B11110010, B00101001,
 B11100100, B11100101, B01000011, B11100001
 };
 
@@ -204,7 +204,7 @@ shiftOut(data_1, clock_1, MSBFIRST, shift_1[i]);
 shiftOut(data_2, clock_2, MSBFIRST, gnd[i]);
 digitalWrite(latch_1, HIGH);
 digitalWrite(latch_2, HIGH);
-delay(1000);
+delay(500);
 i++;
 if (i>=3)
 {i=0;
