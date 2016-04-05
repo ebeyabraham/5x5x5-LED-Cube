@@ -17,7 +17,7 @@ pinMode(clock_2, OUTPUT);
 pinMode(data_2, OUTPUT);
 }
 
-void RITU()                                                                        //RITU 2016
+void RITU()                                                                        //RITU 2016 
 {
 byte shift_1[]=
 {
