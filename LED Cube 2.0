@@ -192,6 +192,7 @@ digitalWrite(latch_2, HIGH);
 delay(10);
 }
 }
+}
 
 void H_Layers()                                                         //HORIZONTAL LAYERS 
 {
@@ -355,7 +356,7 @@ byte gnd[][5]={ {B00000100},
                   {B00000001,B00000010,B00000100,B00001000,B00010000}
                 };
 
-for(int a=o; a<10;a++)               
+for(int a=0; a<10;a++)               
 {
 for(int i=0;i<4;i++)
 {
@@ -469,6 +470,7 @@ byte shift_2[]={B00000000,B01000010,B00000000,B10000100};
 byte shift_1[]={B00011111,B00010000,B00000000,B00100001};
 
 byte gnd=B00011111;
+int i=0;
 for(int j=0; j<=10;)
 {
 digitalWrite(latch_1, LOW);
@@ -484,7 +486,7 @@ delay(100);
 i++;
 if (i==5)
 {i=0;
-j++}
+j++;}
 } 
 }
 
