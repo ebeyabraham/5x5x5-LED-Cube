@@ -79,6 +79,89 @@ j++;
 }
 }
 
+void hollowCube()                                                           //HOLLOW CUBE
+{
+byte shift_4[][5]={{B00000000},
+                 {B00000000,B00000000,B00000000},
+                 {B00000001,B00000001,B00000001,B00000001,B00000001}
+                 };
+byte shift_3[][5]={{B00000000},
+                  { B00000111,B00000101,B00000111 },
+                  {B11111000,B00010000,B00010000,B00010000,B11111000}
+                };
+byte shift_2[][5]={{B00010000},
+                  {B00101001,B0000001,B00101001},
+                  {B11000110,B0000000,B0000000,B0000000,B11000110}
+                };
+byte shift_1[][5]={{B00000000},
+                  {B11000000,B01000000,B11000000},
+                  {B00111111,B00010001,B00010001,B00010001,B00111111}
+                };
+
+byte gnd[][5]={ {B00000100},
+                {B00000010,B00000100,B00001000},
+                {B00000001,B00000010,B00000100,B00001000,B00010000}
+           };
+           
+for(int a=0; a<=10; a++)
+{
+for(int i=0;i<4;i++)
+{
+if(i==0)
+{
+digitalWrite(latch_1, LOW);
+digitalWrite(latch_2, LOW);
+shiftOut(data_1, clock_1, MSBFIRST, shift_4[i][0]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_3[i][0]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_2[i][0]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_1[i][0]);
+shiftOut(data_2, clock_2, MSBFIRST, gnd[i][0]);
+digitalWrite(latch_1, HIGH);
+digitalWrite(latch_2, HIGH);
+delay(300);
+}
+else if(i==1)
+{
+  for(int k=0;k<50;k++)
+  {
+  for(int j=0;j<3;j++)
+  {
+digitalWrite(latch_1, LOW);
+digitalWrite(latch_2, LOW);
+shiftOut(data_1, clock_1, MSBFIRST, shift_4[i][j]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_3[i][j]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_2[i][j]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_1[i][j]);
+shiftOut(data_2, clock_2, MSBFIRST, gnd[i][j]);
+digitalWrite(latch_1, HIGH);
+digitalWrite(latch_2, HIGH);
+delayMicroseconds(3000);
+  }
+  }
+}
+else if(i==2)
+{
+  for(int k=0;k<50;k++)
+  {
+  for(int j=0;j<5;j++)
+  {
+digitalWrite(latch_1, LOW);
+digitalWrite(latch_2, LOW);
+shiftOut(data_1, clock_1, MSBFIRST, shift_4[i][j]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_3[i][j]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_2[i][j]);
+shiftOut(data_1, clock_1, MSBFIRST, shift_1[i][j]);
+shiftOut(data_2, clock_2, MSBFIRST, gnd[i][j]);
+digitalWrite(latch_1, HIGH);
+digitalWrite(latch_2, HIGH);
+delayMicroseconds(3000);
+  }
+  }
+}
+}
+}
+}
+
 void lblDiagonally()                                                //LINE BY LINE DIAGONAL LIT UP
 {
 byte shift_4[]={B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000001};
